@@ -120,7 +120,7 @@ namespace Newtonsoft.Json.Serialization
 #if (!(SILVERLIGHT || PORTABLE40) || WINDOWS_PHONE)
         new XmlNodeConverter(),
 #endif
-#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE)
+#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE || AOT)
         new BinaryConverter(),
         new DataSetConverter(),
         new DataTableConverter(),

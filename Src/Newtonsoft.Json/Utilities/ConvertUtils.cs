@@ -36,7 +36,7 @@ using System.Reflection;
 using Newtonsoft.Json.Utilities.LinqBridge;
 #endif
 
-#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE)
+#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE || AOT)
 using System.Data.SqlTypes;
 #endif
 
@@ -456,7 +456,7 @@ namespace Newtonsoft.Json.Utilities
         throw new Exception("Can not convert null {0} into non-nullable {1}.".FormatWith(CultureInfo.InvariantCulture, initialType, targetType));
       }
 #endif
-#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE)
+#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE || AOT)
       if (initialValue is INullable)
         return EnsureTypeAssignable(ToValue((INullable)initialValue), initialType, targetType);
 #endif
@@ -543,7 +543,7 @@ namespace Newtonsoft.Json.Utilities
       throw new ArgumentException("Could not cast or convert from {0} to {1}.".FormatWith(CultureInfo.InvariantCulture, (initialType != null) ? initialType.ToString() : "{null}", targetType));
     }
 
-#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE)
+#if !(SILVERLIGHT || NETFX_CORE || PORTABLE40 || PORTABLE || AOT)
     public static object ToValue(INullable nullableValue)
     {
       if (nullableValue == null)
